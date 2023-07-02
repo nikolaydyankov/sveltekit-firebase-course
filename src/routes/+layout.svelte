@@ -2,4 +2,4 @@
   import '$lib/app.css'
 </script>
 
-<slot></slot>
+<slot />
