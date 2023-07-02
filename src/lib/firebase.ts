@@ -30,6 +30,7 @@ function userStore() {
 
   const { subscribe } = writable(auth?.currentUser ?? null, (set) => {
     unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log(user)
       set(user)
     })
 
@@ -69,6 +70,7 @@ interface UserData {
 }
 
 export const userData: Readable<UserData | null> = derived(user, ($user, set) => {
+  console.log($user)
   if ($user) {
     return docStore<UserData>(`users/${$user.uid}`).subscribe(set)
   } else {
